@@ -12,7 +12,10 @@ const {
 const books = [
     {name: "Great mind", genre: "Moltivativational", id: "1", authorId: "1"},
     {name: "High mind", genre: "Sci-fi", id: "2", authorId: "2"},
-    {name: "Lovely mind", genre: "Fantasy", id: "3", authorId: "3"}
+    {name: "Lovely mind", genre: "Fantasy", id: "3", authorId: "3"},
+    {name: "Color of Love", genre: "Romance", id: "4", authorId: "1"},
+    {name: "African Pride", genre: "Fantasy", id: "5", authorId: "2"},
+    {name: "Rebelion", genre: "Fantasy", id: "6", authorId: "3"}
 ]
 
 // fake authors
