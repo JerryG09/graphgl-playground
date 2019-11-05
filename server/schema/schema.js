@@ -10,9 +10,9 @@ const {
 
 // fake db
 const books = [
-    {name: "Great mind", genre: "Moltivativational", id: "1"},
-    {name: "High mind", genre: "Sci-fi", id: "2"},
-    {name: "Lovely mind", genre: "Fantasy", id: "3"}
+    {name: "Great mind", genre: "Moltivativational", id: "1", authorId: "1"},
+    {name: "High mind", genre: "Sci-fi", id: "2", authorId: "2"},
+    {name: "Lovely mind", genre: "Fantasy", id: "3", authorId: "3"}
 ]
 
 // fake authors
@@ -27,7 +27,15 @@ const BookType = new GraphQLObjectType({
     fields: () => ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},
-        genre: {type: GraphQLString}
+        genre: {type: GraphQLString},
+        author: {
+            type: AuthorType,
+            resolve(parent, args) {
+                // Code to get data from db/other source
+                console.log(parent)
+                return _.find(authors, {id: parent.authorId})
+            }
+        }
     })
 })
 
