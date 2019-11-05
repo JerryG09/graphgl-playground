@@ -1,6 +1,12 @@
 const graphql = require('graphql')
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql
 
+// fake db
+const bookLog = [
+    {name: "Great mind", genre: "Moltivativational", id: "1"},
+    {name: "High mind", genre: "Sci-fi", id: "2"},
+    {name: "Lovely mind", genre: "Fantasy", id: "3"}
+]
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
