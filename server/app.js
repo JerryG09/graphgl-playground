@@ -1,8 +1,15 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
+const mongoose = require('mongoose')
 
 const app = express()
+
+// connection to mongo atlas
+mongoose
+	.connect('mongodb://localhost/graphql-tutorial')
+	.then(() => console.log('MongoDB connected...'))
+	.catch(err => console.log(err))
 
 app.use('/graphql', graphqlHTTP({
    schema,
