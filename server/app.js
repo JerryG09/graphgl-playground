@@ -1,5 +1,5 @@
-import express from "express"
-import graphqlHTTP from 'express-graphql'
+const express = require('express')
+const graphqlHTTP = require('express-graphql')
 
 const app = express()
 
