@@ -27,7 +27,7 @@ function BookList(props) {
     if (!data.loading) {
       return data.books.map(book => {
         return (
-          <li>{book.name}</li>
+          <li key={book.id}>{book.name}</li>
         )
       })
     }
