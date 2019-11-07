@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { graphql } from "react-apollo"
-import { getAuthorsQuery } from "../querries/querries"
+import { graphql } from "react-apollo";
+import * as compose from 'lodash.flowright';
+import { getAuthorsQuery, addBookMutation } from "../querries/querries"
 
 function AddBook(props) {
   const initialBook = {
@@ -16,24 +17,24 @@ function AddBook(props) {
     const value = e.target.value;
     const name = e.target.name
     setBooks({...books, [name]: value})
-    console.log(books)
   }  
 
   const handleSubmit = (e) => {
     e.preventDefault()
     
     if (!books.authorId.length || !books.genre.length || !books.name.length) {
-      return
+      return window.alert("Fill required fields")
     }
 
     // else {
 
     // }
-    console.log()
+    console.log(books)
   }
 
     function displayAuthors() {
-      const data = props.data;
+      console.log(props)
+      const data = props.getAuthorsQuery;
       if (data.loading) {
         return (<option disabled>Loading Authors...</option>);
       }
@@ -47,7 +48,7 @@ function AddBook(props) {
   
     return (
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="add-book">
           <div className="field">
             <label htmlFor="">Book name:</label>
             <input 
@@ -88,4 +89,7 @@ function AddBook(props) {
   }
 
 
-export default graphql(getAuthorsQuery)(AddBook);
+export default compose(
+  graphql(getAuthorsQuery, {name: "getAuthorsQuery"}),
+  graphql(addBookMutation, {name: "addBookMutation"})
+)(AddBook);
