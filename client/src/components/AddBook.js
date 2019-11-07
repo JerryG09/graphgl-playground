@@ -25,8 +25,14 @@ function AddBook(props) {
     if (!books.authorId.length || !books.genre.length || !books.name.length) {
       return window.alert("Fill required fields")
     }
-    props.addBookMutation()
-    // console.log(books)
+    props.addBookMutation({
+      variables: {
+        name: books.name,
+        genre: books.genre,
+        authorId: books.authorId
+      }
+    })
+    console.log(books)
   }
 
     function displayAuthors() {
