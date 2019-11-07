@@ -10,7 +10,7 @@ function AddBook(props) {
         return (<option disabled>Loading Authors...</option>);
       }
 
-      if(!data.loading) {
+      else {
         return data.authors.map(author => {
           return (<option key={author.id} value={author.id}>{author.name}</option>)
         })

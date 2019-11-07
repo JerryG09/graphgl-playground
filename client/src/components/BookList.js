@@ -15,7 +15,8 @@ function BookList(props) {
         </div>
       )
     }
-    if (!data.loading) {
+    
+    else {
       return data.books.map(book => {
         return (
           <li key={book.id}>{book.name}</li>
